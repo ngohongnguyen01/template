@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <form id="form">
+        <input id="status1" value/>
+    </form>
+    <form id="ratingForm">
+        <fieldset class="rating">
+            <legend>Please rate:</legend>
+            <input type="radio" id="star5" name="rating" value="rất tốt" /><label for="star5" title="rất tốt!">5
+                stars</label>
+            <input type="radio" id="star4" name="rating" value="khá tốt" /><label for="star4" title="Khá tốt">4
+                stars</label>
+            <input type="radio" id="star3" name="rating" value="trung bình" /><label for="star3" title="trung bình">3
+                stars</label>
+            <input type="radio" id="star2" name="rating" value="tệ" /><label for="star2" title="tệ">2 stars</label>
+            <input type="radio" id="star1" name="rating" value="rất tệ" /><label for="star1" title="rất tệ">1
+                star</label>
+        </fieldset>
+        <div class="clearfix"></div>
+        <button class="submit clearfix">Submit</button>
+    </form>
+    <script>
+        $(document).ready(function() {
+            $("form#ratingForm").submit(function(e) {
+                e.preventDefault(); // prevent the default click action from being performed
+                if ($("#ratingForm :radio:checked").length == 0) {
+                    $('#status').html("bạn chưa rating");
+                    return false;
+                } else {
+                    // $('#status').html('bạn chọn  ' + $('input:radio[name=rating]:checked').val());
+                    var fieldID = $(this).prev().attr("id");
+                    let value = $('input:radio[name=rating]:checked')
+                    $('#status1').val(value[0].defaultValue)
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
